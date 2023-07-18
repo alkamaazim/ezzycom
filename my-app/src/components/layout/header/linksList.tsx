@@ -40,19 +40,15 @@ const listData: TListData[] = [
     link: "#",
   },
   {
-    title: "Company",
+    title: "Shop",
     link: "#",
   },
   {
-    title: "Marketplace",
+    title: "About",
     link: "#",
   },
   {
-    title: "Features",
-    link: "#",
-  },
-  {
-    title: "Team",
+    title: "Blog",
     link: "#",
   },
   {
