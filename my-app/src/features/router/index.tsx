@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from '../../components/layout/header';
 import Footer from '../../components/layout/footer';
 import Home from '../../components/pages/home';
+import ProductInfo from '../../components/pages/productInfo';
+import Cart from '../../components/pages/cart';
+import WishList from '../../components/pages/wishlist';
 
 type Props = {}
 
@@ -13,6 +16,9 @@ const CustomRouters = (props: Props) => {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/productinfo" element={<ProductInfo />} />
+                <Route path="/wishlist" element={<WishList />} />
+                <Route path="/cart" element={<Cart />} />
             </Routes>
             <Footer />
         </Router>
