@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 type Props = {};
 
 const headTitle = (
-  <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+  <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
     CATEGORIES2
   </h2>
 );
@@ -19,7 +19,7 @@ export const FooterLinks1 = (props: Props) => {
             <li key={index}>
               <Link
                 to={link.link}
-                className="text-gray-600 hover:text-gray-800"
+                className="text-custom-light-purple-color hover:text-custom-light-color transition duration-500 ease-in-out"
               >
                 {link.title}
               </Link>
@@ -41,7 +41,7 @@ export const FooterLinks2 = (props: Props) => {
             <li key={index}>
               <Link
                 to={link.link}
-                className="text-gray-600 hover:text-gray-800"
+                className="text-custom-light-purple-color hover:text-custom-light-color transition duration-500 ease-in-out"
               >
                 {link.title}
               </Link>
@@ -63,7 +63,7 @@ export const FooterLinks3 = (props: Props) => {
             <li key={index}>
               <Link
                 to={link.link}
-                className="text-gray-600 hover:text-gray-800"
+                className="text-custom-light-purple-color hover:text-custom-light-color transition duration-500 ease-in-out"
               >
                 {link.title}
               </Link>

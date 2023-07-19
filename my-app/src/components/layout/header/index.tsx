@@ -10,8 +10,8 @@ type Props = {};
 const Header = (props: Props) => {
   return (
     <React.Fragment>
-      <header>
-        <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <header className="sticky top-0 border-b border-custom-light-color z-10">
+        <nav className="bg-gray-50 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="https://flowbite.com" className="flex items-center">
               <img
@@ -25,7 +25,7 @@ const Header = (props: Props) => {
             </a>
             <div className="flex items-center lg:order-2">
               <Link
-                to="#"
+                to="/wishlist"
                 className="relative px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
               > 
                 <img
@@ -39,7 +39,7 @@ const Header = (props: Props) => {
                 </div> */}
               </Link>
               <Link
-                to="#"
+                to="/cart"
                 className="relative bg-custom-light-color hover:bg-custom-light-color hover:text-custom-primary-color focus:ring-2 focus:ring-custom-light-purple-color transition duration-500 ease-in-out font-medium rounded-lg text-sm px-4 py-2 mr-2 focus:outline-none"
               >
                 <img
