@@ -1,2 +1,2 @@
 # ezzycom
-Developing E-commerce Application with React, Tailwind, PHP and SQL
+Developing E-commerce Application with React, Tailwind, Node and SQL
