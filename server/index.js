@@ -1,13 +1,15 @@
-const express = require("express");
-const mysql = require("mysql");
+// const express = require("express");
+// const mysql = require("mysql");
+import express from "express";
+import mysql from "mysql";
 
 const app = express();
 
 const dbConfig = {
   host: "localhost",
-  user: "mrawal",
-  password: "Admin@123",
-  database: "mrawal_ezzyCom",
+  user: "alkama.azim",
+  password: "alkama@123",
+  database: "ezzyCom",
 };
 
 const connection = mysql.createConnection(dbConfig);
