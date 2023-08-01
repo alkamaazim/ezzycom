@@ -9,7 +9,10 @@ import WishList from '../../components/pages/wishlist';
 import AdminLogin from '../../admin';
 import AdminDashboard from '../../admin/dashboard';
 import AddProduct from '../../admin/addProduct';
+import AddCategory from '../../admin/addCategory';
 import ProductList from '../../admin/productList';
+import UserList from '../../admin/usersList';
+import OrderList from '../../admin/orderList';
 
 type Props = {}
 
@@ -22,10 +25,13 @@ const CustomRouters = (props: Props) => {
                 <Route path='/admin' element={<AdminLogin />}/>
                 <Route path='/admindashboard' element={<AdminDashboard />}/>
                 <Route path='/addproduct' element={<AddProduct />}/>
+                <Route path='/addcategory' element={<AddCategory />}/>
                 <Route path='/productlist' element={<ProductList />}/>
+                <Route path='/userlist' element={<UserList />}/>
+                <Route path='/orderlist' element={<OrderList />}/>
 
                 <Route path="/" element={<Home />} />
-                <Route path="/productinfo" element={<ProductInfo />} />
+                <Route path="/productinfo/:id" element={<ProductInfo />} />
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>

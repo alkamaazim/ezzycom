@@ -15,18 +15,23 @@ const sidebarList = [
     icon: "fa-solid fa-circle-plus",
   },
   {
+    title: "Add Category",
+    link: "/addcategory",
+    icon: "fa-solid fa-circle-plus",
+  },
+  {
     title: "Products",
     link: "/productlist",
     icon: "fa-solid fa-list",
   },
   {
     title: "Users",
-    link: "#",
+    link: "/userlist",
     icon: "fa-solid fa-user",
   },
   {
     title: "Orders",
-    link: "#",
+    link: "/orderlist",
     icon: "fa-solid fa-cart-shopping",
   },
 ];
