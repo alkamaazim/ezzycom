@@ -4,7 +4,7 @@ type Props = {
   btnText?: string;
   bgColor: string;
   bgHover: string;
-  inlineClasses: string;
+  inlineClasses?: string;
   iconStatus?: boolean;
   icon?: string;
   type?: "reset" | "submit" | "button" | undefined;

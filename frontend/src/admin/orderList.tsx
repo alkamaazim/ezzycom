@@ -1,66 +1,59 @@
 import React from "react";
 import NavigationMenu from "./navigation";
 import Sidebar from "./sidebar";
-import { Link } from "react-router-dom";
-import PageTitle from "./pageTitle";
+import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "../components/common/customButton";
+import PageTitle from "./pageTitle";
 
 type Props = {};
 
 const tableData = [
   {
-    name: "Samsung Note 21",
-    category: "Phones",
-    price: "59999",
-    stock: "32",
-    description: "Samsung mobiles",
+    user: "Amit",
+    productName: "T-Shirt(2), Shirt(3)",
     image: "",
-    discount: "200",
+    productQty: "5",
+    orderPrice: "999",
+    address: "Delhi",
   },
   {
-    name: "Realme 3C",
-    category: "Phones",
-    price: "8999",
-    stock: "21",
-    description: "Best Phone Under 9000 INR",
+    user: "Ravi",
+    productName: "T-Shirt(1), Shirt(1)",
     image: "",
-    discount: "25",
+    productQty: "2",
+    orderPrice: "599",
+    address: "Mumbai",
   },
   {
-    name: "Polo T-shirt",
-    category: "cloths",
-    price: "999",
-    stock: "321",
-    description: "Clothing",
+    user: "Shubham",
+    productName: "T-Shirt(2), Shirt(3)",
     image: "",
-    discount: "19",
+    productQty: "5",
+    orderPrice: "999",
+    address: "Bangalore",
   },
 ];
 
-const ProductList = (props: Props) => {
+const OrderList = (props: Props) => {
+  const navigate = useNavigate();
   return (
     <React.Fragment>
       <NavigationMenu />
       <Sidebar />
       <main className="p-4 md:ml-64 h-auto pt-20">
-        <PageTitle
-          title="Product List"
-          backLink="/admindashboard"
-          addBtn={true}
-        />
+        <PageTitle title="Order List" backLink="/admindashboard" />
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 {[
                   "SNo.",
-                  "Product name",
-                  "Category",
-                  "Price",
-                  "Stock",
-                  "Discount",
-                  "Description",
+                  "Username",
+                  "Product Name & Qty",
                   "Image",
+                  "Total Qty",
+                  "Order Price",
+                  "Address",
                   "Action",
                 ].map((tableHead, index) => (
                   <th key={index} scope="col" className="px-6 py-3">
@@ -79,24 +72,21 @@ const ProductList = (props: Props) => {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
-                    {item.name}
+                    {item.user}
                   </td>
-                  <td className="px-6 py-4">{item.category}</td>
-                  <td className="px-6 py-4">{item.price}</td>
-                  <td className="px-6 py-4">{item.stock}</td>
-                  <td className="px-6 py-4">{item.discount}</td>
-                  <td className="px-6 py-4">{item.description}</td>
+                  <td className="px-6 py-4">{item.productName}</td>
                   <td className="px-6 py-4">{item.image}</td>
+                  <td className="px-6 py-4">{item.productQty}</td>
+                  <td className="px-6 py-4">{item.orderPrice}</td>
+                  <td className="px-6 py-4">{item.address}</td>
                   <td className="px-6 py-4">
                     <CustomButton
-                      icon="fa-solid fa-trash"
-                      iconStatus={true}
+                      btnText="Unfulfilled"
                       bgColor="custom-primary-color"
                       bgHover="custom-light-purple-color"
                     />{" "}
                     <CustomButton
-                      icon="fa-solid fa-pen-to-square"
-                      iconStatus={true}
+                      btnText="Cancle"
                       bgColor="custom-light-purple-color"
                       bgHover="custom-primary-color"
                     />
@@ -111,4 +101,4 @@ const ProductList = (props: Props) => {
   );
 };
 
-export default ProductList;
+export default OrderList;

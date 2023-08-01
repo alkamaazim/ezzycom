@@ -6,96 +6,59 @@ type Props = {};
 const FeaturedProducts = (props: Props) => {
   return (
     <React.Fragment>
-      <section className="text-gray-600 body-font bg-custom-light-purple-color">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            {collectionsData.map((item, index) => (
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={index}>
-                <Link
-                  to={`/productinfo/${item.id}`}
-                  className="block relative h-48 rounded overflow-hidden"
-                >
+      <div className="bg-white body-font">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            Customers also purchased
+          </h2>
+
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {products.map((product) => (
+              <div key={product.id} className="group relative">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
-                    alt="ecommerce"
-                    className="object-cover object-center w-full h-full block"
-                    src="https://dummyimage.com/420x260"
+                    src={product.imageSrc}
+                    alt={product.imageAlt}
+                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
-                </Link>
-                <div className="mt-4">
-                  <h3 className="text-gray-200 text-xs tracking-widest title-font mb-1">
-                    {item.category}
-                  </h3>
-                  <h2 className="text-white title-font text-lg font-medium">
-                    {item.title}
-                  </h2>
-                  <p className="mt-1 text-custom-black-color">{item.price}</p>
+                </div>
+                <div className="mt-4 flex justify-between">
+                  <div>
+                    <h3 className="text-sm text-gray-700">
+                      <Link to={`/productinfo/${product.id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {product.color}
+                    </p>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {product.price}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
     </React.Fragment>
   );
 };
 
 export default FeaturedProducts;
 
-const collectionsData = [
+const products = [
   {
     id: 1,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$35",
+    color: "Black",
   },
-  {
-    id: 2,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 3,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 4,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 5,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 6,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 7,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
-  {
-    id: 8,
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    price: "$16.00",
-    image: "",
-  },
+  // More products...
 ];
