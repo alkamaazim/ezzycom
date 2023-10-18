@@ -7,7 +7,10 @@ const getProducts = (req, res) => {
   const q = "SELECT * FROM products";
   connection.query(q, (err, data) => {
     if (err) return res.json(err);
-    return res.json(data);
+    const dataObj = {
+      items : data, 
+    }
+    return res.json(dataObj);
   });
 };
 //@desc Get one Product Products
@@ -18,7 +21,10 @@ const getProduct = (req, res) => {
   const q = "SELECT * FROM products WHERE id = ?";
   connection.query(q,[productId], (err, data) => {
     if (err) return res.json(err);
-    return res.json(data);
+    const dataObj = {
+      items : data, 
+    }
+    return res.json(dataObj);
   });
 };
 //@desc add  Products
@@ -69,6 +75,7 @@ const deleteProduct = (req, res) => {
     return res.json("Product deleted successfully");
   });
 };
+
 module.exports = {
   getProducts,
   getProduct,

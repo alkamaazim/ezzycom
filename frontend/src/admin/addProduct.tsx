@@ -2,7 +2,7 @@ import React from "react";
 import NavigationMenu from "./navigation";
 import Sidebar from "./sidebar";
 import CustomButton from "../components/common/customButton";
-import PageTitle from "./pageTitle";
+// import PageTitle from "./pageTitle";
 
 type Props = {};
 
@@ -12,7 +12,7 @@ const AddProduct = (props: Props) => {
       <NavigationMenu />
       <Sidebar />
       <main className="p-4 md:ml-64 h-auto pt-20">
-      <PageTitle title="Add Product" backLink="/admindashboard" />
+      {/* <PageTitle title="Add Product" backLink="/admindashboard" /> */}
         <form>
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-6 group">

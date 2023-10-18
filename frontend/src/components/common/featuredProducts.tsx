@@ -1,9 +1,28 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import getData from "../../adapters/coreServices";
 
 type Props = {};
 
 const FeaturedProducts = (props: Props) => {
+  const dummyData = {
+    items: [],
+  };
+  const [allProducts, setAllProducts] = useState(dummyData);
+
+  useEffect(() => {
+    let endPoint = "/products";
+    getData(endPoint)
+      .then((res: any) => {
+        if (res.data !== "" && res.status === 200) {
+          setAllProducts(res.data);
+        }
+      })
+      .catch((error: any) => {
+        alert(error.message);
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <div className="bg-white body-font">
@@ -13,12 +32,12 @@ const FeaturedProducts = (props: Props) => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
+            {allProducts.items.map((product: any, index: number) => (
               <div key={product.id} className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
+                    src={product.image}
+                    alt={product.name}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
@@ -31,7 +50,7 @@ const FeaturedProducts = (props: Props) => {
                       </Link>
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      {product.color}
+                      {/* {product.color} */}
                     </p>
                   </div>
                   <p className="text-sm font-medium text-gray-900">
@@ -48,17 +67,3 @@ const FeaturedProducts = (props: Props) => {
 };
 
 export default FeaturedProducts;
-
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  // More products...
-];

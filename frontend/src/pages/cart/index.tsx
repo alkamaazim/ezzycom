@@ -1,9 +1,9 @@
 import React from "react";
 import CartPriceDetails from "./cartPriceDetails";
-import CustomButton from "../../common/customButton";
-import RatingStars from "../../common/ratingStars";
-import Header from "../../layout/header";
-import Footer from "../../layout/footer";
+import CustomButton from "../../components/common/customButton";
+import RatingStars from "../../components/common/ratingStars";
+import Header from "../../components/layout/header";
+import Footer from "../../components/layout/footer";
 
 type Props = {};
 
