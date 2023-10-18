@@ -1,5 +1,5 @@
 import React from "react";
-import CustomButton from "../../common/customButton";
+import CustomButton from "../../components/common/customButton";
 import ShippingList from "./shippingList";
 
 type Props = {};

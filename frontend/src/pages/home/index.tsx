@@ -1,8 +1,8 @@
 import React from "react";
-import FeaturedProducts from "../../common/featuredProducts";
-import Collections from "../../common/collections";
-import Header from "../../layout/header";
-import Footer from "../../layout/footer";
+import FeaturedProducts from "../../components/common/featuredProducts";
+import Collections from "../../components/common/collections";
+import Header from "../../components/layout/header";
+import Footer from "../../components/layout/footer";
 
 type Props = {};
 

@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-const ProductSize = (props: Props) => {
+const ProductSizeAndColor = (props: Props) => {
   return (
     <React.Fragment>
       <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
@@ -41,4 +41,4 @@ const ProductSize = (props: Props) => {
   );
 };
 
-export default ProductSize;
+export default ProductSizeAndColor;
