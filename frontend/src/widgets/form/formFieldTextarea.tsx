@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Field } from "formik";
 
 type Props = {
-  id?: number;
+  id?: string | undefined;
   errors?: any;
   touched?: any;
   type?: string;
@@ -18,31 +18,28 @@ type Props = {
 </div> */
 }
 
-const FormFieldText: FunctionComponent<Props> = (props) => {
-  const error =
-    props.errors != undefined &&
-    props.errors.charAt(0).toUpperCase() + props.errors.slice(1);
+const FormFieldTextarea: FunctionComponent<Props> = (props) => {
+  // const error =
+  //   props.errors != undefined &&
+  //   props.errors.charAt(0).toUpperCase() + props.errors.slice(1);
   return (
     <React.Fragment>
-      <div className="w-full">
+      <div className="sm:col-span-2">
         <label
           htmlFor={props.name}
           className="block mb-2 text-sm font-medium text-gray-900"
         >
           {props.labelText}
         </label>
-        <Field
+        <textarea
           id={props.id}
-          type={props.type}
-          name={props.name}
+        //   rows="8"
+          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
           placeholder={props.placeholder}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-          // required
-        />
-      <p style={{color: "red"}}>{error}</p>
+        ></textarea>
       </div>
     </React.Fragment>
   );
 };
 
-export default FormFieldText;
+export default FormFieldTextarea;

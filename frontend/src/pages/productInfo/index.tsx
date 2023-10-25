@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import ProductSizeAndColor from "./productSize";
-import getData from "../../adapters/coreServices";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
+import { getData } from "../../adapters/coreServices";
 import SocialLink from "../../components/common/socialLink";
 import RatingStars from "../../components/common/ratingStars";
 import CustomButton from "../../components/common/customButton";

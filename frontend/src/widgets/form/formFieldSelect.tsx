@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Field } from "formik";
 
 type Props = {
-  id?: number;
+  id?: string | undefined;
   errors?: any;
   touched?: any;
   type?: string;
@@ -18,10 +18,10 @@ type Props = {
 </div> */
 }
 
-const FormFieldText: FunctionComponent<Props> = (props) => {
-  const error =
-    props.errors != undefined &&
-    props.errors.charAt(0).toUpperCase() + props.errors.slice(1);
+const FormFieldSelect: FunctionComponent<Props> = (props) => {
+  // const error =
+  //   props.errors != undefined &&
+  //   props.errors.charAt(0).toUpperCase() + props.errors.slice(1);
   return (
     <React.Fragment>
       <div className="w-full">
@@ -31,18 +31,18 @@ const FormFieldText: FunctionComponent<Props> = (props) => {
         >
           {props.labelText}
         </label>
-        <Field
+        <select
           id={props.id}
-          type={props.type}
-          name={props.name}
-          placeholder={props.placeholder}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-          // required
-        />
-      <p style={{color: "red"}}>{error}</p>
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+        >
+          <option selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
       </div>
     </React.Fragment>
   );
 };
 
-export default FormFieldText;
+export default FormFieldSelect;
