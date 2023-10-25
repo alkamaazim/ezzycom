@@ -1,23 +1,23 @@
 import React from "react";
 
 type Props = {
-  btnText?: string;
-  bgColor: string;
-  bgHover: string;
-  inlineClasses?: string;
   iconStatus?: boolean;
-  icon?: string;
+  icon?: string | undefined;
+  btnText?: string | undefined;
+  bgColor?: string | undefined;
+  bgHover?: string | undefined;
+  inlineClasses?: string | undefined;
   type?: "reset" | "submit" | "button" | undefined;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const CustomButton = ({
   type,
-  btnText = "",
   bgColor,
   bgHover,
-  inlineClasses,
   icon = "",
+  btnText = "",
+  inlineClasses,
   iconStatus = false,
   onClick,
 }: Props) => {
@@ -27,12 +27,16 @@ const CustomButton = ({
       <button
         type={type}
         onClick={onClick}
-        className={`${inlineClasses} ml-auto text-white bg-${bgColor} border-0 py-2 px-6 focus:outline-none hover:bg-${bgHover} rounded transition duration-500 ease-in-out`}
+        className={`${inlineClasses} bg-${bgColor} hover:bg-${bgHover} ml-auto text-white border-0 py-2 px-6 focus:outline-none rounded transition duration-500 ease-in-out`}
       >
         {iconStatus !== true ? text : <i className={icon}></i>}
       </button>
     </React.Fragment>
   );
 };
+
+const ResetButton = (props: Props) => {
+  
+}
 
 export default CustomButton;

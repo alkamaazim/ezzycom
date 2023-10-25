@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import getData from "../../adapters/coreServices";
+import { getData } from "../../adapters/coreServices";
 
 type Props = {};
 

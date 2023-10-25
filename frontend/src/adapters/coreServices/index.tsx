@@ -1,10 +1,15 @@
 import { axiosConfig } from "./utils";
 
-type Props = {}
+type Props = {};
 
 const getData = (endPoint: string, params?: any) => {
-    const instance: any = axiosConfig.axiosInstance;
-    return instance.get(endPoint);
-}
+  const instance: any = axiosConfig.axiosInstance;
+  return instance.get(endPoint);
+};
 
-export default getData
+const postData = (endPoint: string, values: any) => {
+  const instance: any = axiosConfig.axiosInstance;
+  return instance.post(endPoint, values);
+};
+
+export { getData, postData };

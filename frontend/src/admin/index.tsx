@@ -31,7 +31,7 @@ const AdminLogin = (props: Props) => {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Your email
+                    Username / Email
                   </label>
                   <input
                     type="email"
@@ -59,28 +59,37 @@ const AdminLogin = (props: Props) => {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  <Link
+                    to="#"
+                    className="text-sm font-medium text-gray-600 hover:underline"
                   >
                     Forgot password?
-                  </a>
-                </div>
-                <CustomButton
-                  btnText="Login"
-                  bgColor="custom-primary-color"
-                  bgHover="custom-light-purple-color"
-                  inlineClasses="w-full"
-                />
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet?{" "}
-                  <Link
-                    to="/signup"
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Sign up
                   </Link>
-                </p>
+                </div>
+                <div className="text-center">
+                  <CustomButton
+                    type="submit"
+                    btnText="Login"
+                    bgColor="custom-primary-color"
+                    bgHover="custom-light-purple-color"
+                    inlineClasses="me-2"
+                  />
+                  <CustomButton
+                    type="reset"
+                    btnText="Reset"
+                    bgColor="custom-primary-color"
+                    bgHover="custom-light-purple-color"
+                  />
+                  <p className="text-sm mt-3 font-light text-gray-500 dark:text-gray-400">
+                    Don’t have an account yet?{" "}
+                    <Link
+                      to="/signup"
+                      className="font-medium text-primary-600 hover:underline"
+                    >
+                      Sign up
+                    </Link>
+                  </p>
+                </div>
               </form>
             </div>
           </div>
