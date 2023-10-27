@@ -1,11 +1,11 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
-import FormFieldText from "../widgets/form/formFieldText";
-import GoBackButton from "../widgets/buttons/goBackButton";
-import CustomButton from "../components/common/customButton";
-import FormFieldSelect from "../widgets/form/formFieldSelect";
-import FormFieldTextarea from "../widgets/form/formFieldTextarea";
+import FormFieldText from "../../widgets/form/formFieldText";
+import GoBackButton from "../../widgets/buttons/goBackButton";
+import CustomButton from "../../widgets/buttons/customButton";
+import FormFieldSelect from "../../widgets/form/formFieldSelect";
+import FormFieldTextarea from "../../widgets/form/formFieldTextarea";
 
 type Props = {};
 

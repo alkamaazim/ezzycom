@@ -1,5 +1,5 @@
 import React from "react";
-import CustomButton from "../components/common/customButton";
+import CustomButton from "../buttons/customButton";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -20,8 +20,8 @@ const PageTitle = ({ title, backLink, addBtn = false }: Props) => {
           {addBtn === true && (
             <CustomButton
               btnText="Add Product"
-              bgColor="custom-light-purple-color"
-              bgHover="custom-primary-color"
+              bgColor="custom-primary-color"
+              bgHover="custom-light-purple-color"
               inlineClasses="mb-3 text-sm"
               onClick={() => navigate("/addproduct")}
             />
@@ -35,6 +35,7 @@ const PageTitle = ({ title, backLink, addBtn = false }: Props) => {
           />
         </div>
       </div>
+      <hr />
     </React.Fragment>
   );
 };

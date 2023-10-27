@@ -5,8 +5,8 @@ import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
 import { getData } from "../../adapters/coreServices";
 import SocialLink from "../../components/common/socialLink";
-import RatingStars from "../../components/common/ratingStars";
-import CustomButton from "../../components/common/customButton";
+import RatingStars from "../../widgets/rating/ratingStars";
+import CustomButton from "../../widgets/buttons/customButton";
 
 type Props = {};
 

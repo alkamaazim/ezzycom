@@ -8,7 +8,10 @@ const DashboardCard = (props: Props) => {
     <React.Fragment>
       {cardData.map((item, index) => (
         <Link to={item.link} className="">
-          <div key={index} className="flex justify-center items-center border-2 border-dashed border-gray-300 rounded-lg h-32 md:h-64">
+          <div
+            key={index}
+            className="flex justify-center items-center border-2 border-dashed border-gray-300 rounded-lg h-32 md:h-64"
+          >
             <div>
               <i className={item.icon}></i>
               <h2>{item.title}</h2>

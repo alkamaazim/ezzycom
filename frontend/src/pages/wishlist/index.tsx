@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
-import CustomButton from "../../components/common/customButton";
-import RatingStars from "../../components/common/ratingStars";
+import CustomButton from "../../widgets/buttons/customButton";
+import RatingStars from "../../widgets/rating/ratingStars";
 
 type Props = {};
 
