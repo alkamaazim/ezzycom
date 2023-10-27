@@ -1,7 +1,7 @@
 import React from "react";
-import NavigationMenu from "./navigation";
-import Sidebar from "./sidebar";
+import Sidebar from "../common/sidebar";
 import DashboardCard from "./dashboardCard";
+import NavigationMenu from "../common/navigation";
 type Props = {};
 
 const AdminDashboard = (props: Props) => {

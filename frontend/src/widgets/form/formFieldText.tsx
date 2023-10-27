@@ -36,10 +36,10 @@ const FormFieldText: FunctionComponent<Props> = (props) => {
           type={props.type}
           name={props.name}
           placeholder={props.placeholder}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          className={`bg-gray-50 border ${props.errors ? "border-red-300" : "border-gray-300"} text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
           // required
         />
-      <p style={{color: "red"}}>{error}</p>
+        <p style={{ color: "red", fontSize: "small" }}>{error}</p>
       </div>
     </React.Fragment>
   );

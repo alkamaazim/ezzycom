@@ -1,5 +1,5 @@
 import React from "react";
-import CustomButton from "../../components/common/customButton";
+import CustomButton from "../../widgets/buttons/customButton";
 
 type Props = {};
 

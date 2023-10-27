@@ -1,58 +1,58 @@
 import React from "react";
-import NavigationMenu from "./navigation";
-import Sidebar from "./sidebar";
+import Sidebar from "../common/sidebar";
+import NavigationMenu from "../common/navigation";
 import { Link, useNavigate } from "react-router-dom";
-import CustomButton from "../components/common/customButton";
-import PageTitle from "./pageTitle";
+import PageTitle from "../../widgets/global/pageTitle";
+import CustomButton from "../../widgets/buttons/customButton";
 
 type Props = {};
 
 const tableData = [
   {
-    name: "Ravi",
-    email: "ravi@gmail.com",
-    phone: "9999999999",
-    gender: "Male",
-    dp: "",
+    user: "Amit",
+    productName: "T-Shirt(2), Shirt(3)",
+    image: "",
+    productQty: "5",
+    orderPrice: "999",
     address: "Delhi",
   },
   {
-    name: "Kriti",
-    email: "kriti@gmail.com",
-    phone: "9999999999",
-    gender: "Female",
-    dp: "",
-    address: "Noida",
+    user: "Ravi",
+    productName: "T-Shirt(1), Shirt(1)",
+    image: "",
+    productQty: "2",
+    orderPrice: "599",
+    address: "Mumbai",
   },
   {
-    name: "Shubham",
-    email: "shubham@gmail.com",
-    phone: "9999999999",
-    gender: "Male",
-    dp: "",
+    user: "Shubham",
+    productName: "T-Shirt(2), Shirt(3)",
+    image: "",
+    productQty: "5",
+    orderPrice: "999",
     address: "Bangalore",
   },
 ];
 
-const UserList = (props: Props) => {
+const OrderList = (props: Props) => {
   const navigate = useNavigate();
   return (
     <React.Fragment>
       <NavigationMenu />
       <Sidebar />
       <main className="p-4 md:ml-64 h-auto pt-20">
-        <PageTitle title="User List" backLink="/admindashboard" />
+        <PageTitle title="Order List" backLink="/admindashboard" />
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 {[
                   "SNo.",
-                  "Name",
-                  "Email",
-                  "Phone",
-                  "Dp",
-                  "Gender",
+                  "Username",
+                  "Product Name & Qty",
+                  "Image",
+                  "Total Qty",
+                  "Order Price",
                   "Address",
                   "Action",
                 ].map((tableHead, index) => (
@@ -65,28 +65,28 @@ const UserList = (props: Props) => {
             <tbody>
               {tableData.map((item, index) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{index + 1}</td>
+                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {index + 1}
+                  </td>
                   <td
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
-                    {item.name}
+                    {item.user}
                   </td>
-                  <td className="px-6 py-4">{item.email}</td>
-                  <td className="px-6 py-4">{item.phone}</td>
-                  <td className="px-6 py-4">{item.gender}</td>
-                  <td className="px-6 py-4">{item.dp}</td>
+                  <td className="px-6 py-4">{item.productName}</td>
+                  <td className="px-6 py-4">{item.image}</td>
+                  <td className="px-6 py-4">{item.productQty}</td>
+                  <td className="px-6 py-4">{item.orderPrice}</td>
                   <td className="px-6 py-4">{item.address}</td>
                   <td className="px-6 py-4">
                     <CustomButton
-                      icon="fa-solid fa-trash"
-                      iconStatus={true}
+                      btnText="Unfulfilled"
                       bgColor="custom-primary-color"
                       bgHover="custom-light-purple-color"
                     />{" "}
                     <CustomButton
-                      icon="fa-solid fa-pen-to-square"
-                      iconStatus={true}
+                      btnText="Cancle"
                       bgColor="custom-light-purple-color"
                       bgHover="custom-primary-color"
                     />
@@ -101,4 +101,4 @@ const UserList = (props: Props) => {
   );
 };
 
-export default UserList;
+export default OrderList;

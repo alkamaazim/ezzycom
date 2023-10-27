@@ -1,14 +1,15 @@
 import React from "react";
-import * as Yup from "yup"
-import Sidebar from "./sidebar";
+import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
-import NavigationMenu from "./navigation";
-import { postData } from "../adapters/coreServices";
-import FormFieldText from "../widgets/form/formFieldText";
-import CustomButton from "../components/common/customButton";
-import MessageToastifyAlert from "../widgets/alerts/toastifyAlert";
-// import PageTitle from "./pageTitle";
+import Sidebar from "../common/sidebar";
+import { useNavigate } from "react-router-dom";
+import NavigationMenu from "../common/navigation";
+import { postData } from "../../adapters/coreServices";
+import PageTitle from "../../widgets/global/pageTitle";
+import FormFieldText from "../../widgets/form/formFieldText";
+import CustomButton from "../../widgets/buttons/customButton";
+import MessageToastifyAlert from "../../widgets/alerts/toastifyAlert";
 
 type Props = {};
 
@@ -25,22 +26,28 @@ const initialValues = {
 const validationSchema = Yup.object({
   price: Yup.number().required(),
   stock: Yup.number().required(),
-  image: Yup.string().required(),
+  // image: Yup.string().required(),
   discount: Yup.number().required(),
-  name: Yup.string().trim().min(3, "Name must be more than 2 characters.").required(),
+  name: Yup.string()
+    .trim()
+    .min(3, "Name must be more than 2 characters.")
+    .required(),
   category: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
-})
+});
 
 const AddProduct = (props: Props) => {
-  const handleFormData = (values: any, action: any) => {
+  const navigate = useNavigate();
+
+  const handleFormData = (values: any, { setSubmitting, resetForm }: any) => {
     let endPoint = "/products";
     postData(endPoint, values)
       .then((res: any) => {
-        toast.success(res.data)
+        toast.success(res.data);
+        resetForm();
       })
       .catch((error: any) => {
-        toast.error(error.data)
+        toast.error(error.data);
       });
   };
 
@@ -49,19 +56,20 @@ const AddProduct = (props: Props) => {
       <NavigationMenu />
       <Sidebar />
       <main className="p-4 md:ml-64 h-auto pt-20">
-        {/* <PageTitle title="Add Product" backLink="/admindashboard" /> */}
+        <PageTitle title="Add Product" backLink="/admindashboard" />
         <MessageToastifyAlert />
+        <div className="text-end">
+        </div>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values, action) => {
-            // console.log(values);
             handleFormData(values, action);
           }}
         >
           {({ errors, touched }) => (
             <Form>
-              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mt-3">
                 <FormFieldText
                   type="text"
                   name="name"
@@ -73,40 +81,40 @@ const AddProduct = (props: Props) => {
                 <FormFieldText
                   type="text"
                   name="category"
-                  // errors={errors}
-                  // touched={touched}
+                  errors={errors.category}
+                  touched={touched.category}
                   labelText="Product Category"
                   placeholder="Product Category"
                 />
                 <FormFieldText
                   type="number"
                   name="price"
-                  // errors={errors}
-                  // touched={touched}
+                  errors={errors.price}
+                  touched={touched.price}
                   labelText="Price"
                   placeholder="Price"
                 />
                 <FormFieldText
                   type="number"
                   name="stock"
-                  // errors={errors}
-                  // touched={touched}
+                  errors={errors.stock}
+                  touched={touched.stock}
                   labelText="Product Stock"
                   placeholder="Product Stock"
                 />
                 <FormFieldText
                   type="number"
                   name="discount"
-                  // errors={errors}
-                  // touched={touched}
+                  errors={errors.discount}
+                  touched={touched.discount}
                   labelText="Product Discount"
                   placeholder="Product Discount"
                 />
                 <FormFieldText
                   type="text"
                   name="description"
-                  // errors={errors}
-                  // touched={touched}
+                  errors={errors.description}
+                  touched={touched.description}
                   labelText="Description"
                   placeholder="Description"
                 />

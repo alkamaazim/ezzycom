@@ -11,7 +11,7 @@ const MessageToastifyAlert = (props: Props) => {
       {/* <button onClick={notify}>Notify!</button> */}
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
