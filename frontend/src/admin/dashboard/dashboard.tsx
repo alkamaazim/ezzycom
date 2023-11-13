@@ -1,10 +1,13 @@
-import React from "react";
 import Sidebar from "../common/sidebar";
 import DashboardCard from "./dashboardCard";
+import React, {useState, useEffect} from "react";
 import NavigationMenu from "../common/navigation";
+import { getData } from "../../adapters/coreServices";
+
 type Props = {};
 
 const AdminDashboard = (props: Props) => {
+
   return (
     <React.Fragment>
       <div className="antialiased bg-gray-50 dark:bg-gray-900">

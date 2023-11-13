@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
 });
 
 // middleware === >>>
-app.use("/products", cors(), require("./routes/productRoutes"));
+app.use("/", cors(), require("./routes/productRoutes"));
+app.use("/", cors(), require("./routes/userRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

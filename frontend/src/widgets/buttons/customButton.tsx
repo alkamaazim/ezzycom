@@ -35,8 +35,6 @@ const CustomButton = ({
   );
 };
 
-const ResetButton = (props: Props) => {
-  
-}
+const ResetButton = (props: Props) => {};
 
 export default CustomButton;

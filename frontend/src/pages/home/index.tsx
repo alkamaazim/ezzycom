@@ -1,12 +1,36 @@
-import React from "react";
-import FeaturedProducts from "../../components/common/featuredProducts";
-import Collections from "../../components/common/collections";
+import Collections from "./collections";
+import React, { useState, useEffect } from "react";
+import FeaturedProducts from "./featuredProducts";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
+import { getData } from "../../adapters/coreServices";
 
 type Props = {};
 
-const Home = (props: Props) => {
+const Home: React.FC<Props> = (props) => {
+  const dummyData = {
+    items: [],
+  };
+  const [allProducts, setAllProducts] = useState(dummyData);
+  const [errorMsgObj, setErrorMsgObj] = useState({ msg: "", status: false });
+  const [apiStatus, setApiStatus] = useState("");
+
+  useEffect(() => {
+    setApiStatus("started");
+    const endPoint = "/products";
+    getData(endPoint)
+      .then((res: any) => {
+        if (res.data !== "" && res.status === 200) {
+          setAllProducts(res.data);
+        }
+        setApiStatus("finished");
+      })
+      .catch((error: any) => {
+        setErrorMsgObj({ msg: error.message, status: true });
+        setApiStatus("finished");
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <Header />
@@ -85,7 +109,11 @@ const Home = (props: Props) => {
           </div>
         </div>
       </section>
-      <FeaturedProducts />
+      <FeaturedProducts
+        apiStatus={apiStatus}
+        errorMsgObj={errorMsgObj}
+        allProducts={allProducts.items}
+      />
       <Collections />
       <Footer />
     </React.Fragment>

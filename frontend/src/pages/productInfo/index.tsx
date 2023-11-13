@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
 import { getData } from "../../adapters/coreServices";
-import SocialLink from "../../components/common/socialLink";
+import SocialLink from "../../components/home/socialLink";
 import RatingStars from "../../widgets/rating/ratingStars";
 import CustomButton from "../../widgets/buttons/customButton";
 
