@@ -1,28 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { getData } from "../../adapters/coreServices";
+import AlertMessageComponent from "../../widgets/alerts/alert";
 
-type Props = {};
+type Props = {
+  allProducts: any;
+  apiStatus: string;
+  errorMsgObj: { msg: string; status: boolean };
+};
 
-const FeaturedProducts = (props: Props) => {
-  const dummyData = {
-    items: [],
-  };
-  const [allProducts, setAllProducts] = useState(dummyData);
-
-  useEffect(() => {
-    let endPoint = "/products";
-    getData(endPoint)
-      .then((res: any) => {
-        if (res.data !== "" && res.status === 200) {
-          setAllProducts(res.data);
-        }
-      })
-      .catch((error: any) => {
-        alert(error.message);
-      });
-  }, []);
-
+const FeaturedProducts: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <div className="bg-white body-font">
@@ -30,9 +16,14 @@ const FeaturedProducts = (props: Props) => {
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Customers also purchased
           </h2>
-
+          {props.errorMsgObj.status !== false && (
+            <AlertMessageComponent
+              variant="danger"
+              msgText={props.errorMsgObj.msg}
+            />
+          )}
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {allProducts.items.map((product: any, index: number) => (
+            {props.allProducts.map((product: any) => (
               <div key={product.id} className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img

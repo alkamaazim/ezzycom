@@ -12,4 +12,14 @@ const postData = (endPoint: string, values: any) => {
   return instance.post(endPoint, values);
 };
 
-export { getData, postData };
+const updateData = (endPoint: string) => {
+  const instance: any = axiosConfig.axiosInstance;
+  return instance.put(endPoint);
+};
+
+const deleteData = (endPoint: string) => {
+  const instance: any = axiosConfig.axiosInstance;
+  return instance.delete(endPoint);
+};
+
+export { getData, postData, updateData, deleteData };

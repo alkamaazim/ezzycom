@@ -1,27 +1,18 @@
-import React from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import Sidebar from "../common/sidebar";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NavigationMenu from "../common/navigation";
-import { postData } from "../../adapters/coreServices";
+import React, { useEffect, useState } from "react";
 import PageTitle from "../../widgets/global/pageTitle";
 import FormFieldText from "../../widgets/form/formFieldText";
 import CustomButton from "../../widgets/buttons/customButton";
 import MessageToastifyAlert from "../../widgets/alerts/toastifyAlert";
+import { getData, postData, updateData } from "../../adapters/coreServices";
 
 type Props = {};
-
-const initialValues = {
-  name: "",
-  price: "",
-  stock: "",
-  image: "",
-  discount: "",
-  category: "",
-  description: "",
-};
 
 const validationSchema = Yup.object({
   price: Yup.number().required(),
@@ -37,18 +28,59 @@ const validationSchema = Yup.object({
 });
 
 const AddProduct = (props: Props) => {
-  const navigate = useNavigate();
+  const { id } = useParams();
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    price: "",
+    stock: "",
+    image: "",
+    discount: "",
+    category: "",
+    description: "",
+  });
+
+  useEffect(() => {
+    if (id !== undefined) {
+      const endPoint = `/products/${id}`;
+      getData(endPoint).then((res: any) => {
+        console.log(res.data.items[0].name);
+        setInitialValues((prevValues) => ({
+          ...prevValues,
+          name: res.data.items[0].name,
+          price: res.data.items[0].price,
+          stock: res.data.items[0].stock,
+          image: res.data.items[0].image,
+          discount: res.data.items[0].discount,
+          category: res.data.items[0].category,
+          description: res.data.items[0].description,
+        }));
+      });
+    }
+  }, [id]);
+
+  console.log(initialValues);
 
   const handleFormData = (values: any, { setSubmitting, resetForm }: any) => {
-    let endPoint = "/products";
-    postData(endPoint, values)
-      .then((res: any) => {
-        toast.success(res.data);
-        resetForm();
-      })
-      .catch((error: any) => {
-        toast.error(error.data);
-      });
+    let endPoint = `/products`;
+    if (id !== undefined) {
+      endPoint += `/${id}`;
+      updateData(endPoint)
+        .then((res: any) => {
+          toast.success(res.data);
+        })
+        .catch((error: any) => {
+          toast.error(error.data);
+        });
+    } else {
+      postData(endPoint, values)
+        .then((res: any) => {
+          toast.success(res.data);
+          resetForm();
+        })
+        .catch((error: any) => {
+          toast.error(error.data);
+        });
+    }
   };
 
   return (
@@ -56,10 +88,12 @@ const AddProduct = (props: Props) => {
       <NavigationMenu />
       <Sidebar />
       <main className="p-4 md:ml-64 h-auto pt-20">
-        <PageTitle title="Add Product" backLink="/admindashboard" />
+        <PageTitle
+          title={id !== undefined ? "Update Product" : "Add Product"}
+          backLink="/admindashboard"
+        />
         <MessageToastifyAlert />
-        <div className="text-end">
-        </div>
+        <div className="text-end"></div>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -147,18 +181,20 @@ const AddProduct = (props: Props) => {
               <div>
                 <CustomButton
                   type="submit"
-                  btnText="Add"
+                  btnText={id !== undefined ? "update" : "Add"}
                   bgColor="custom-primary-color"
                   bgHover="custom-light-purple-color"
                   inlineClasses=""
                 />{" "}
-                <CustomButton
-                  type="reset"
-                  btnText="Reset"
-                  bgColor="custom-primary-color"
-                  bgHover="custom-primary-color"
-                  inlineClasses=""
-                />
+                {id === undefined && (
+                  <CustomButton
+                    type="reset"
+                    btnText="Reset"
+                    bgColor="custom-primary-color"
+                    bgHover="custom-primary-color"
+                    inlineClasses=""
+                  />
+                )}
               </div>
             </Form>
           )}

@@ -1,10 +1,14 @@
-import React from 'react'
-import AdminLogin from './auth/login'
+import React from "react";
+import AdminLogin from "./auth/login";
 
 const Admin = () => {
   return (
-    <div><AdminLogin /></div>
-  )
-}
+    <React.Fragment>
+      <div>
+        <AdminLogin />
+      </div>
+    </React.Fragment>
+  );
+};
 
-export default Admin
+export default Admin;

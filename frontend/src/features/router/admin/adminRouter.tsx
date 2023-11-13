@@ -17,7 +17,7 @@ const AdminRouter = () => {
     <Route path='/addcategory' element={<AddCategory />}/> ,
     <Route path="/signup" key="signup" element={<Signup />} />,
     <Route path="/productlist" key="productlist" element={<ProductList />} />,
-    <Route path="/addproduct" key="admaddproductin" element={<AddProduct />} />,
+    <Route path="/addproduct/:id?" key="admaddproductin" element={<AddProduct />} />,
     <Route path="/admindashboard" key="admindashboard" element={<AdminDashboard />} />,
   ];
 };
