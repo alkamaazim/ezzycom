@@ -1,18 +1,4 @@
-const mysql = require('mysql');
-const dbConfig = {
-  host: "localhost",
-  user: "alkama.azim",
-  password: "alkama@123",
-  database: "ezzyCom",
-};
+const mongoose = require('mongoose');
 
-const connection = mysql.createConnection(dbConfig);
-
-connection.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL database:", err);
-    return;
-  }
-  console.log("Connected to MySQL database!");
-});
-module.exports = connection;
+mongoose.connect('mongodb+srv://admin:admin@task-manager.5dwfxm0.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => console.log('Connected!'));

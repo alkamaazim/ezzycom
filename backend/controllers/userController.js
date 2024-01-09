@@ -1,4 +1,5 @@
 const connection = require("../db/db");
+require("../modals/user");
 
 //@desc Get all Products
 //@route GET /product
@@ -31,21 +32,28 @@ const getUser = (req, res) => {
 //@route POST /products
 //@access public
 const addUser = (req, res) => {
-  const q =
-    "INSERT INTO `user`(`username`, `password`, `email`, `phone`, `dp`, `gender`, `address`) VALUES (?)";
-  const values = [
-    req.body.username,
-    req.body.password,
-    req.body.email,
-    req.body.phone,
-    req.body.dp,
-    req.body.gender,
-    req.body.address,
-  ];
-  connection.query(q, [values], (err, data) => {
-    if (err) return res.json(err);
-    return res.json("User Created Successfully");
-  });
+
+  console.log(req.body);
+
+
+
+
+
+  // const q =
+  //   "INSERT INTO `user`(`username`, `password`, `email`, `phone`, `dp`, `gender`, `address`) VALUES (?)";
+  // const values = [
+  //   req.body.username,
+  //   req.body.password,
+  //   req.body.email,
+  //   req.body.phone,
+  //   req.body.dp,
+  //   req.body.gender,
+  //   req.body.address,
+  // ];
+  // connection.query(q, [values], (err, data) => {
+  //   if (err) return res.json(err);
+  //   return res.json("User Created Successfully");
+  // });
 };
 
 //@desc Update  Products
