@@ -1,5 +1,6 @@
 const connection = require("../db/db");
-require("../modals/user");
+const jwt = require('jsonwebtoken');
+const USER = require("../modals/user");
 
 //@desc Get all Products
 //@route GET /product
@@ -19,41 +20,22 @@ const getUsers = (req, res) => {
 //@access public
 const getUser = (req, res) => {
   const userId = req.params.id;
-  const q = "SELECT * FROM user WHERE id = ?";
-  connection.query(q, [userId], (err, data) => {
-    if (err) return res.json(err);
-    const dataObj = {
-      items: data,
-    };
-    return res.json(dataObj);
-  });
+  const user = USER();
 };
-//@desc add  Products
-//@route POST /products
+//@desc add  User
+//@route POST /users
 //@access public
-const addUser = (req, res) => {
+const addUser = async (req, res) => {
 
-  console.log(req.body);
+  const newUser = new USER(req.body);
+  const token = await newUser.generateJWToken();
+  try {
+    await newUser.save();
+    res.status(201).send({newUser, token});
+  } catch (e) {
+    res.status(400).send(e);
+  }
 
-
-
-
-
-  // const q =
-  //   "INSERT INTO `user`(`username`, `password`, `email`, `phone`, `dp`, `gender`, `address`) VALUES (?)";
-  // const values = [
-  //   req.body.username,
-  //   req.body.password,
-  //   req.body.email,
-  //   req.body.phone,
-  //   req.body.dp,
-  //   req.body.gender,
-  //   req.body.address,
-  // ];
-  // connection.query(q, [values], (err, data) => {
-  //   if (err) return res.json(err);
-  //   return res.json("User Created Successfully");
-  // });
 };
 
 //@desc Update  Products
